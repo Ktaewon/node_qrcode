@@ -1,14 +1,11 @@
 // @ts-check
 
 const express = require('express')
-const bodyParser = require('body-parser')
 const qrCode = require('qrcode')
 
 const PORT = 3000
 const app = express()
 app.use(express.static('./static'))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/:qr', (req, res) => {
   qrCode.toDataURL(req.params.qr, (err, url) => {
